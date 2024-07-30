@@ -1,6 +1,0 @@
-{
-    "files.autoSave": "onFocusChange",
-    "java.compile.nullAnalysis.mode": "automatic",
-    "java.configuration.updateBuildConfiguration": "automatic",
-    "remote.autoForwardPortsFallback": 0
-}

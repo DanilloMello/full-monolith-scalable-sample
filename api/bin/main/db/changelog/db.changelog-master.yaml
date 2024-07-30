@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: classpath:db/changelog/migrations/db.changelog-root.yaml
+#  - includeAll:
+#      path: db/changelog/migrations/

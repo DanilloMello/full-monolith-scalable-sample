@@ -1,0 +1,35 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: example
+  datasource:
+    url: jdbc:postgresql://localhost:15432/example
+    username: local
+    password: local
+  jpa:
+    open-in-view: true
+    hibernate.ddl-auto: validate
+    show-sql: true
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  docker:
+    compose:
+      skip:
+        in-tests: false
+  graphql:
+    graphiql:
+      enabled: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+components:
+  gateway:
+    scale: false
+  services:
+    one:
+      scale: false
+    two:
+      scale: false

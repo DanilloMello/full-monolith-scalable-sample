@@ -1,0 +1,41 @@
+type SetDTO {
+    setOrder: Int
+    repetition: Int
+    repetitionByTime: Float
+    cadence: String
+    restBetweenExercises: Float
+    restBetweenSets: Float
+    weight: Int
+    rangeOfMotion: Int
+}
+
+type ExerciseDTO {
+    id: ID!
+    name: String
+    sets: [SetDTO]!
+}
+
+type WorkoutDTO {
+    id: ID!,
+    name: String,
+    exercises: [ExerciseDTO]
+}
+
+type Mutation {
+    createWorkout(name: String!) : WorkoutDTO
+    updateWorkout(id: ID!, name: String) : WorkoutDTO
+
+    createExercise(name: String!, workoutId: String!): ExerciseDTO
+    updateExercise(id: ID!, name: String): ExerciseDTO
+
+    createSet(
+        setOrder: Int
+        repetition: Int,
+        repetitionByTime: Float,
+        cadence: String,
+        restBetweenExercises: Float,
+        restBetweenSets: Float,
+        weight: Int,
+        rangeOfMotion: Int): SetDTO
+
+}

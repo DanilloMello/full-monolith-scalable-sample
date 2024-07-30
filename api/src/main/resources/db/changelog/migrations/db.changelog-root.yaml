@@ -1,0 +1,97 @@
+databaseChangeLog:
+  - changeSet:
+      id: "1"
+      author: admin
+      preConditions:
+        - dbms:
+              type: postgresql
+        - onFail: MARK_RAN
+          not:
+            [
+              tableExists:tableName: one
+            ]
+      changes:
+        - createTable:
+            tableName: one
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_one
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: "2"
+      author: admin
+      preConditions:
+        - dbms:
+              type: postgresql
+        - onFail: MARK_RAN
+          not:
+            [
+              tableExists:tableName: two
+            ]
+      changes:
+        - createTable:
+            tableName: two
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_two
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: "3"
+      author: admin
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            [
+              tableExists:tableName: event_publication
+            ]
+      changes:
+        - createTable:
+            tableName: event_publication
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_event_publication
+              - column:
+                  name: completion_date
+                  type: timestamptz(6)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: event_type
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: listener_id
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: publication_date
+                  type: timestamptz(6)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: serialized_event
+                  type: varchar(255)
+                  constraints:
+                    nullable: true

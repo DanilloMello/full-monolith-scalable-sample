@@ -1,0 +1,36 @@
+server:
+  port: 9090
+  servlet:
+    contextPath: /api
+spring:
+  application:
+    name: unitfit
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          keycloak:
+#            client-id: unitfit-training-backend
+#            client-secret: vaJpTKjdcM86nXmtL4SBU4MvnFKXvqfp
+#            scope: openid, profile, email
+#        provider:
+#          keycloak:
+#            issuer-uri: http://localhost:8080/realms/unitfit
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://localhost:8080/realms/unitfit
+  datasource:
+    url: jdbc:postgresql://localhost:15432/training
+    username: local
+    password: local
+  jpa:
+    open-in-view: true
+    hibernate.ddl-auto: validate
+    show-sql: true
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  docker:
+    compose:
+      skip:
+        in-tests: false

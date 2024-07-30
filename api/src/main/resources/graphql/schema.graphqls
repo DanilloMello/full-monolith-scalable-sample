@@ -1,0 +1,16 @@
+type Query {
+    retrieveExampleOne(name: String!) : ServiceOneCreateResponse
+}
+
+type Mutation {
+    createExampleOne(request: ServiceOneCreateRequest!) : ServiceOneCreateResponse
+}
+
+type ServiceOneCreateResponse{
+    id: ID!
+    name: String!
+}
+
+input ServiceOneCreateRequest {
+    name: String!
+}

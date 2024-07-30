@@ -1,0 +1,186 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: admin
+      preConditions:
+        - dbms:
+              type: postgresql
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: workout
+      changes:
+        - createTable:
+            tableName: workout
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_workout
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: client_id
+                  type: UUID
+                  constraints:
+                    nullable: true
+  - changeSet:
+      id: 2
+      author: admin
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: exercise
+      changes:
+        - createTable:
+            tableName: exercise
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_exercise
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: workout_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_workout
+                    references: workout(id)
+  - changeSet:
+      id: 3
+      author: admin
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: set
+      changes:
+        - createTable:
+            tableName: set
+            columns:
+              - column:
+                  name: set_order
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: repetition
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: repetition_by_time
+                  type: numeric(21)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cadence
+                  type: varchar(4)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rest_between_exercises
+                  type: numeric(21)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rest_between_sets
+                  type: numeric(21)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: weight
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: range_of_motion
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: exercise_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_exercise
+                    references: exercise(id)
+  - changeSet:
+      id: 4
+      author: admin
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: event_publication
+      changes:
+        - createTable:
+            tableName: event_publication
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_event_publication
+              - column:
+                  name: completion_date
+                  type: timestamptz(6)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: event_type
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: listener_id
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: publication_date
+                  type: timestamptz(6)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: serialized_event
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+  - changeSet:
+      id: 5
+      author: admin
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: customer
+      changes:
+        - createTable:
+            tableName: customer
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_customer
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false

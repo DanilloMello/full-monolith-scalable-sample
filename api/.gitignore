@@ -1,8 +1,5 @@
 /.gradle
-unitfit/gradle/wrapper/caches/**
 /.idea
 /build/**
-!/unitfit/src
-!/unitfit/build.gradle
-.vscode
+.vscode/
 .gitattributes

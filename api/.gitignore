@@ -5,3 +5,4 @@ unitfit/gradle/wrapper/caches/**
 !/unitfit/src
 !/unitfit/build.gradle
 .vscode
+.gitattributes

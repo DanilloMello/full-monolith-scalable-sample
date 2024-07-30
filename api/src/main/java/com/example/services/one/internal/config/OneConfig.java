@@ -13,7 +13,7 @@ import com.example.services.one.internal.usecases.CreateUseCase;
 import com.example.services.one.internal.usecases.ICreateUsecase;
 
 @Configuration
-@ComponentScan(basePackages = {"com.unitfit.services.one"})
+@ComponentScan(basePackages = {"com.example.services.one"})
 public class OneConfig {
 
     @Bean

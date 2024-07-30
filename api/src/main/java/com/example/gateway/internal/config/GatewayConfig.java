@@ -14,7 +14,7 @@ import com.example.gateway.internal.usecases.ServiceOneCreateEventUseCase;
 
 @Configuration
 @EnableAsync
-@ComponentScan(basePackages = {"com.unitfit.gateway.internal"})
+@ComponentScan(basePackages = {"com.example.gateway.internal"})
 public class GatewayConfig {
 
     @Bean

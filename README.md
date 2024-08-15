@@ -1,5 +1,5 @@
 # full-monolith-scalable-sample
 
-This project aims to serve as a starting point for creating scalable monolithic architectures.
+Scalable monolithic architecture.
 
 ![plot](./docs/fullmonolith-example.png)
